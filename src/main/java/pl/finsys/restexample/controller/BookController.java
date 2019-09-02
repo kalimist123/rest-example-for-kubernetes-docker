@@ -1,5 +1,6 @@
 package pl.finsys.restexample.controller;
 
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,8 @@ public class BookController {
         LOGGER.debug("Received request to create the {}", book);
         return bookService.saveBook(book);
     }
+    @ApiOperation(value = "Retrieve a list of books.",
+            responseContainer = "List")
     @RequestMapping(value = "/books", method = RequestMethod.GET, produces={"application/json"})
     public List<Book> listBooks() {
         LOGGER.debug("Received request to list all books");
